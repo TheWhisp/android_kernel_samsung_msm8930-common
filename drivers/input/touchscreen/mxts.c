@@ -617,6 +617,7 @@ static void mxt_report_input_data(struct mxt_data *data)
 		}
 		report_count++;
 
+#if 0
 #if !defined(CONFIG_SAMSUNG_PRODUCT_SHIP)
 		if (data->fingers[i].state == MXT_STATE_PRESS)
 			dev_info(&data->client->dev, "[P][%d]: T[%d][%d] X[%d],Y[%d]\n",
@@ -634,6 +635,7 @@ static void mxt_report_input_data(struct mxt_data *data)
 				i, data->fingers[i].type,
 				data->fingers[i].event,
 				data->fingers[i].mcount);
+#endif
 
 
 		if (data->fingers[i].state == MXT_STATE_RELEASE) {

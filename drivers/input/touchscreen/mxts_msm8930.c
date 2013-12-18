@@ -1434,6 +1434,7 @@ static void mxt_report_input_data(struct mxt_data *data)
 		}
 		report_count++;
 
+#if 0
 #if !defined(CONFIG_SAMSUNG_PRODUCT_SHIP)
 		if (data->fingers[i].state == MXT_STATE_PRESS) {
 			dev_info(&data->client->dev, "[P][%d]: T[%d][%d] X[%d],Y[%d]",
@@ -1466,6 +1467,7 @@ static void mxt_report_input_data(struct mxt_data *data)
 				i, data->fingers[i].type,
 				data->fingers[i].event,
 				data->fingers[i].mcount);
+#endif
 
 		if (data->fingers[i].state == MXT_STATE_RELEASE) {
 			data->fingers[i].state = MXT_STATE_INACTIVE;
@@ -2771,7 +2773,7 @@ static void mxt_treat_T61_object(struct mxt_data *data,
 					data->AfterCal_cnt =0;
 					if(data->calgood_anti_cnt >= 34 ){
 						mxt_command_calibration(data);
-#if DEBUG_TSP
+#ifdef DEBUG_TSP
 						pr_info("[TSP] CalFail_7 Press_cnt Fail, tch=%d, atch=%d, num=%d, t57tch=%d,calgood_anti_cnt=%d\n"
 						, data->tch_value, data->atch_value, \
 						data->Report_touch_number, \
@@ -2799,7 +2801,7 @@ static void mxt_treat_T61_object(struct mxt_data *data,
 								distance_check_cnt++;
 							}
 							else distance_check_cnt = 0;
-#if DEBUG_TSP
+#ifdef DEBUG_TSP
 							pr_info("[TSP] distance_backup[%d] =%d\n",i, distance_backup[i] );
 #endif					
 						 }
@@ -2811,7 +2813,7 @@ static void mxt_treat_T61_object(struct mxt_data *data,
 						data->touchbx_backup[i] = data->touchbx[i];
 						data->touchby_backup[i] = data->touchby[i];
 					}
-#if DEBUG_TSP
+#ifdef DEBUG_TSP
 					pr_info("[TSP] AfterCal 100msec cnt=%d, tch=%d, atch=%d, t57tch=%d, num=%d, dis_check=%d, calgood_anti_cnt=%d\n",data->AfterCal_cnt, data->tch_value, data->atch_value
 					, data->T57_touch, data->Report_touch_number,distance_check_cnt
 					, data->calgood_anti_cnt );
@@ -2829,7 +2831,7 @@ static void mxt_treat_T61_object(struct mxt_data *data,
 #elif CHECK_ANTITOUCH_SERRANO
 	char tag[] = "T61";
 
-#if DEBUG_TSP
+#ifdef DEBUG_TSP
 	dev_info(&data->client->dev, " %s: %d: datas: %d, %#x, %#x, %#x\n", tag,  //0725
 		data->check_antitouch, message->reportid,message->message[0], message->message[1], message->message[2]);
 #endif
