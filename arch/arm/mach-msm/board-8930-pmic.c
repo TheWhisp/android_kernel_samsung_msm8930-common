@@ -365,7 +365,7 @@ static struct pm8xxx_mpp_platform_data pm8xxx_mpp_pdata __devinitdata = {
 };
 
 static struct pm8xxx_rtc_platform_data pm8xxx_rtc_pdata __devinitdata = {
-	.rtc_write_enable	= true,
+	.rtc_write_enable	= false,
 	.rtc_alarm_powerup	= false,
 };
 
@@ -516,7 +516,7 @@ static struct pm8921_sec_battery_data pm8921_battery_pdata __devinitdata = {
 	.capacity_min = 0,
 
 #if defined(CONFIG_MACH_WILCOX_EUR_LTE)
-	.ui_term_current = 180,
+	.ui_term_current = 150,
 #else
 	.ui_term_current = 130,
 #endif
@@ -555,8 +555,8 @@ static struct pm8921_charger_platform_data pm8921_chg_pdata __devinitdata = {
 #endif
 	.max_voltage		= MAX_VOLTAGE_MV,
 	.min_voltage		= 3400,
-#if defined(CONFIG_MACH_WILCOX_EUR_LTE)
-	.weak_voltage	= 3000,
+#if defined(CONFIG_MACH_WILCOX_EUR_LTE) || defined(CONFIG_MACH_LOGANRE_EUR_LTE)
+	.weak_voltage	= 2800,
 #else
 	.weak_voltage	= 3200,
 #endif
@@ -705,7 +705,7 @@ static struct pm8xxx_misc_platform_data pm8xxx_misc_pdata = {
 
 static struct pm8xxx_spk_platform_data pm8xxx_spk_pdata = {
 	.spk_add_enable		= false,
-	.cd_ng_threshold	= 0x0,
+	.cd_ng_threshold	= 0x6,
 	.cd_nf_preamp_bias	= 0x1,
 	.cd_ng_hold		= 0x6,
 	.cd_ng_max_atten	= 0x0,
@@ -799,7 +799,7 @@ static struct pm8xxx_adc_amux pm8917_adc_channels_data[] = {
 		ADC_DECIMATION_TYPE2, ADC_SCALE_PA_THERM},
 	{"dev_mpp_3", ADC_MPP_1_AMUX6, CHAN_PATH_SCALING1, AMUX_RSV1,
 		ADC_DECIMATION_TYPE2, ADC_SCALE_SEC_BOARD_THERM},  /*main_thm */
-#if defined(CONFIG_MACH_MELIUS)
+#if defined(CONFIG_MACH_MELIUS) || defined(CONFIG_MACH_GOLDEN_VZW)
 	{"dev_mpp_8", ADC_MPP_2_AMUX6, CHAN_PATH_SCALING1, AMUX_RSV1,
 		ADC_DECIMATION_TYPE2, ADC_SCALE_DEFAULT},  /*vf_adc*/
 #endif

@@ -27,11 +27,7 @@ static struct dsi_buf hx8389b_rx_buf;
 
 #if defined(CONFIG_BACKLIGHT_IC_KTD3102)
 spinlock_t bl_ctrl_lock;
-#ifdef KEEP_BRIGHTNESS_ON_FIRST_BOOT
-static int lcd_brightness = KEEP_BRIGHTNESS_ON_FIRST_BOOT;
-#else
 static int lcd_brightness = -1;
-#endif
 #endif
 
 struct mutex dsi_tx_mutex;
@@ -285,7 +281,7 @@ static struct dsi_cmd_desc hx8389b_video_display_on_cmds[] = {
 {DTYPE_GEN_LWRITE, 1, 0, 0, 0,sizeof(C1h), C1h},
 
 {DTYPE_DCS_WRITE, 0, 0, 0, 120,sizeof(exit_sleep), exit_sleep},
-{DTYPE_DCS_WRITE, 0, 0, 0, 120,sizeof(display_on), display_on},
+{DTYPE_DCS_WRITE, 0, 0, 0, 10,sizeof(display_on), display_on},
 };
 
 static struct dsi_cmd_desc hx8389b_video_display_off_cmds[] = {
@@ -385,7 +381,7 @@ static ssize_t mipi_hx8389b_lcdtype_show(struct device *dev,
 			struct device_attribute *attr, char *buf)
 {
 	char temp[30];
-	sprintf(temp, "INH_%x\n", 0);
+	sprintf(temp, "INH_%d\n", 534490);
 	strcat(buf, temp);
 	return strlen(buf);
 }

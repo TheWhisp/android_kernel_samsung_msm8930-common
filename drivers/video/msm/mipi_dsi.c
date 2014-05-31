@@ -80,7 +80,8 @@ extern struct mutex power_state_chagne;
 static struct platform_device *pdev_for_esd;
 extern boolean mdp_shutdown_check;
 #endif
-#if defined(CONFIG_FB_MSM_MIPI_SAMSUNG_OLED_VIDEO_WVGA_PT)
+#if defined(CONFIG_FB_MSM_MIPI_SAMSUNG_OLED_VIDEO_WVGA_PT) \
+     || defined (CONFIG_FB_MSM_MIPI_SAMSUNG_TFT_VIDEO_WSVGA_PT_PANEL)
 void pull_reset_low(void){
 if (mipi_dsi_pdata && mipi_dsi_pdata->active_reset)
 	mipi_dsi_pdata->active_reset(0);
@@ -410,12 +411,13 @@ static int mipi_dsi_on(struct platform_device *pdev)
 	usleep(10000);
 #endif
 
+#if defined(CONFIG_FB_MSM_MIPI_SAMSUNG_TFT_VIDEO_WSVGA_PT_PANEL)
 #if defined(CONFIG_MACH_LT02_SPR) || defined(CONFIG_MACH_LT02_ATT)
 	if(system_rev)
 		ret = panel_next_on(pdev);
-	
-#elif defined(CONFIG_MACH_LT02_CHN_CTC)
+#else
           ret = panel_next_on(pdev);
+#endif
 #endif
 
 	if (mipi->force_clk_lane_hs) {
@@ -432,15 +434,16 @@ static int mipi_dsi_on(struct platform_device *pdev)
 		mutex_lock(&mfd->dma->ov_mutex);
 	else
 		down(&mfd->dma->mutex);
-
-#if !defined(CONFIG_MACH_LT02_CHN_CTC) 
+	
+#if defined(CONFIG_FB_MSM_MIPI_SAMSUNG_TFT_VIDEO_WSVGA_PT_PANEL)
 #if defined(CONFIG_MACH_LT02_SPR) || defined(CONFIG_MACH_LT02_ATT)
 	if(!system_rev)
 		ret = panel_next_on(pdev);
+#endif
 #else
 	ret = panel_next_on(pdev);
 #endif
-#endif
+
 	mipi_dsi_op_mode_config(mipi->mode);
 
 	if (mfd->panel_info.type == MIPI_CMD_PANEL) {

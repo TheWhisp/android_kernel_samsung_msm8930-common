@@ -94,6 +94,7 @@ obj-$(CONFIG_FB_MSM_MIPI_DSI_AMS367_OLED) += mipi_ams367_oled.o mipi_ams367av_ol
 obj-$(CONFIG_FB_MSM_MIPI_DSI_MAGNA_OLED) += mipi_magna_oled.o
 obj-$(CONFIG_MACH_LT02_SPR) += mipi_tc358764_dsi2lvds.o mipi_ql_dsi2lvds.o
 obj-$(CONFIG_MACH_LT02_ATT) += mipi_tc358764_dsi2lvds.o mipi_ql_dsi2lvds.o
+obj-$(CONFIG_MACH_LT02_TMO) += mipi_tc358764_dsi2lvds.o mipi_ql_dsi2lvds.o
 obj-$(CONFIG_FB_MSM_MIPI_DSI_HIMAX_TFT) += mipi_himax_tft.o
 obj-$(CONFIG_FB_MSM_MIPI_DSI_SAMSUNG_TFT) += mipi_samsung_tft.o
 obj-$(CONFIG_FB_MSM_MIPI_DSI_TRULY) += mipi_truly.o
@@ -188,7 +189,7 @@ obj-$(CONFIG_FB_MSM_MIPI_DSI_NOVATEK_NT35596) += mipi_novatek_tft_video_hd_pt.o
 
 obj-$(CONFIG_MACH_LT02_SPR) += mipi_samsung_tft_video_wsvga_pt.o mipi_samsung_lvds_tft_wsvga_pt.o
 obj-$(CONFIG_MACH_LT02_ATT) += mipi_samsung_tft_video_wsvga_pt.o mipi_samsung_lvds_tft_wsvga_pt.o
-
+obj-$(CONFIG_MACH_LT02_TMO) += mipi_samsung_tft_video_wsvga_pt.o mipi_samsung_lvds_tft_wsvga_pt.o
 endif
 
 obj-$(CONFIG_FB_MSM_LCDC_PANEL) += lcdc_panel.o

@@ -500,7 +500,7 @@ void cam_ldo_power_on(int mode)
 			search_error_pin("8917_l32");
 		} else
 			power_on_cnt++;
-#if !defined(CONFIG_MACH_LT02_ATT) || !defined(CONFIG_MACH_LT02_SPR)
+#if !defined(CONFIG_MACH_LT02_ATT) || !defined(CONFIG_MACH_LT02_SPR) || !defined(CONFIG_MACH_LT02_TMO)
 		udelay(1000);
 #endif
 
@@ -555,7 +555,7 @@ void cam_ldo_power_on(int mode)
 		} else
 			power_on_cnt++;
 #endif
-#if !defined(CONFIG_MACH_LT02_ATT) || !defined(CONFIG_MACH_LT02_SPR)
+#if !defined(CONFIG_MACH_LT02_ATT) || !defined(CONFIG_MACH_LT02_SPR) || !defined(CONFIG_MACH_LT02_TMO)
 		udelay(10);
 #endif
 #endif

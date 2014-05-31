@@ -516,6 +516,11 @@ config FB_MSM_MIPI_NT35590_CMD_720P_PT
         bool
         select FB_MSM_MIPI_DSI_NT35590
         default n
+
+config FB_MSM_MIPI_NT35590_VIDEO_720P_PT
+        bool
+        select FB_MSM_MIPI_DSI_NT35590
+        default n
 config FB_MSM_MIPI_AMS367_OLED_VIDEO_WVGA_PT
 	bool
 	select FB_MSM_MIPI_DSI_AMS367_OLED
@@ -1235,6 +1240,12 @@ config BACKLIGHT_IC_KTD253
 	default n
 	---help---
 	  support for KTD253 backlight IC
+
+config BACKLIGHT_IC_KTD3102
+	bool "CONFIG_BACKLIGHT_IC_KTD3102"
+	default n
+	---help---
+	  support for KTD3102 backlight IC
 
 config BACKLIGHT_WORKQUEUE
 	bool "CONFIG_BACKLIGHT_WORKQUEUE"

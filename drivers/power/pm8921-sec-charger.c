@@ -1829,6 +1829,9 @@ static int sec_fg_get_atomic_capacity(struct pm8921_chg_chip *chip, int soc)
 static int get_prop_batt_capacity(struct pm8921_chg_chip *chip)
 {
 	int percent_soc;
+	#if defined(CONFIG_MACH_WILCOX_EUR_LTE)
+	int batt_voltage;
+	#endif
 
 	/*if (param_force_voltage_based_soc) {
 		percent_soc = voltage_based_capacity(chip);
@@ -1899,6 +1902,19 @@ static int get_prop_batt_capacity(struct pm8921_chg_chip *chip)
 		percent_soc = 0;
 	else if (percent_soc > 100)
 		percent_soc = 100;
+
+
+#if defined(CONFIG_MACH_WILCOX_EUR_LTE)
+	if(percent_soc==0)
+	{
+		batt_voltage =get_prop_battery_uvolts(chip);
+		pr_info("%s : Power off voltage check : (%d)\n",__func__, batt_voltage);
+		
+		if(batt_voltage>3400000)
+			percent_soc = 1;
+	}
+#endif
+	
 
 	chip->recent_reported_soc = percent_soc;
 
@@ -2443,7 +2459,7 @@ static int pm_batt_power_get_property(struct power_supply *psy,
 		/*val->intval = chip->charging_enabled;*/
 		switch (chip->cable_type) {
 		case CABLE_TYPE_NONE:
-			val->intval = 0;
+			val->intval = POWER_SUPPLY_TYPE_BATTERY;
 			break;
 		case CABLE_TYPE_USB:
 			val->intval = POWER_SUPPLY_TYPE_USB;

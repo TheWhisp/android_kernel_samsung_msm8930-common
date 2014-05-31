@@ -373,4 +373,3 @@ module_exit(secgpio_dvs_exit);
 MODULE_AUTHOR("intae.jun@samsung.com");
 MODULE_DESCRIPTION("BCM2165x GPIO debugging and verification");
 MODULE_LICENSE("GPL");
-

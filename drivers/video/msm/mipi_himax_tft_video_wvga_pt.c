@@ -489,10 +489,10 @@ enum {
 
 #if defined(CONFIG_MACH_CANE_EUR_3G)
 static int lux_tbl[] = {
-	3,
-	5,  7,  9,  10, 11, 13, 14, 15, 16, 17,
-	19, 20, 21, 22,	23, 24, 25, 26, 27,	28,
-	29, 30, 32, 0,
+	 3,
+	 4,  5,  6,  7,  8,  9, 10, 11, 12, 13,
+	14, 15, 16, 17,	18, 19, 20, 21, 22,	23,
+	24, 25, 26, 27, 28, 29, 30, 31, 32,  0,
 };
 #else
 static int lux_tbl[] = {
@@ -509,85 +509,100 @@ static int get_candela_index(int bl_level)
 	int cd;
 		switch (bl_level) {
  		case 0: 
-			backlightlevel = 24; /*0*/
+			backlightlevel = 30;  /* 0 */
 			break;
-		case 1 ... 19:
-			backlightlevel = 23; /* 32 */
+		case 1 ... 10:
+			backlightlevel = 29;  /* 32 */ /* platform MIN 10 */
+			break;
+		case 11 ... 19:
+			backlightlevel = 28;  /* 31 */
 			break;
 		case 20 ... 29:
-			backlightlevel = 22; /* 31 */
+			backlightlevel = 27;  /* 30 */
 			break;
 		case 30 ... 39:
-			backlightlevel = 22; /* 31 */
+			backlightlevel = 26;  /* 29 */
 			break;
 		case 40 ... 49:
-			backlightlevel = 21; /* 30 */
+			backlightlevel = 25;  /* 28 */
 			break;
 		case 50 ... 59:
-			backlightlevel = 20; /* 29 */
+			backlightlevel = 24;  /* 27 */
 			break;
 		case 60 ... 69:
-			backlightlevel = 19;  /* 28 */
+			backlightlevel = 23;  /* 26 */
 			break;
 		case 70 ... 79:
-			backlightlevel = 18;  /* 27 */
+			backlightlevel = 22;  /* 25 */
 			break;
 		case 80 ... 89:
-			backlightlevel = 17;  /* 26 */
+			backlightlevel = 21;  /* 24 */
 			break;
 		case 90 ... 99:
-			backlightlevel = 15;  /* 24 */
+			backlightlevel = 20;  /* 23 */
 			break;
 		case 100 ... 109:
-			backlightlevel = 15;  /* 24 */
+			backlightlevel = 19;  /* 22 */
 			break;
 		case 110 ... 119:
-			backlightlevel = 14;  /* 20 */
+			backlightlevel = 18;  /* 21 */
 			break;
 		case 120 ... 129:
-			backlightlevel = 13;  /* 21 */
+			backlightlevel = 17;  /* 20 */
 			break;
 		case 130 ... 139:
-			backlightlevel = 13;  /* 20 */
+			backlightlevel = 16;  /* 19 */
 			break;
-		case 140 ... 149:
-			backlightlevel = 11;  /* 18 */
+		case 140 ... 146:
+			backlightlevel = 15;  /* 18 */ /* platform DEF 140 */
 			break;
-		case 150 ... 159:
-			backlightlevel = 11;  /* 18 */
+		case 147 ... 153:
+			backlightlevel = 14;  /* 17 */
 			break;
-		case 160 ... 169:
-			backlightlevel = 10;  /* 17 */
+		case 154 ... 160:
+			backlightlevel = 13;  /* 16 */
 			break;
-		case 170 ... 179:
-			backlightlevel = 9;  /* 16 */
+		case 161 ... 167:
+			backlightlevel = 12;  /* 15 */
 			break;
-		case 180 ... 189:
-			backlightlevel = 8;  /* 15 */
+		case 168 ... 174:
+			backlightlevel = 11;  /* 14 */
 			break;
-		case 190 ... 199:
-			backlightlevel = 8;  /* 15 */
+		case 175 ... 181:
+			backlightlevel = 10;  /* 13 */
 			break;
-		case 200 ... 209:
-			backlightlevel = 6 ;  /* 13 */
+		case 182 ... 188:
+			backlightlevel = 9;   /* 12 */
 			break;
-		case 210 ... 219:
-			backlightlevel = 5;  /* 11 */
+		case 189 ... 195:
+			backlightlevel = 8;   /* 11 */
 			break;
-		case 220 ... 229:
-			backlightlevel = 3;  /* 9 */
+		case 196 ... 202:
+			backlightlevel = 7 ;  /* 10 */
 			break;
-		case 230 ... 239:
-			backlightlevel = 2;  /* 7 */
+		case 203 ... 209:
+			backlightlevel = 6;   /* 9 */
 			break;
-		case 240 ... 249:
-			backlightlevel = 1;  /* 5 */
+		case 210 ... 216:
+			backlightlevel = 5;   /* 8 */
 			break;
-		case 250 ... 255:
-			backlightlevel = 0;  /* 2 */
+		case 217 ... 223:
+			backlightlevel = 4;   /* 7 */
+			break;
+		case 224 ... 230:
+			backlightlevel = 3;   /* 6 */
+			break;
+		case 231 ... 237:
+			backlightlevel = 2;   /* 5 */
+			break;
+		case 238 ... 244:
+			backlightlevel = 1;   /* 4 */
+			break;
+		case 245 ... 255:
+			backlightlevel = 0;   /* 3 */ /* platform MAX 10 */
 			break;
 		default:
-			backlightlevel = 23; /*32*/
+			backlightlevel = 29;  /* 32 */
 			break;
 		}
 

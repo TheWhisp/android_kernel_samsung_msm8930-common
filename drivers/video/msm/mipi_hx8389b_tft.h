@@ -13,8 +13,6 @@
 #include "mipi_dsi.h"
 #include <linux/wakelock.h>
 
-#define CONFIG_BACKLIGHT_IC_KTD3102
-
 #ifndef MIPI_HX8389BDS15_H
 #define MIPI_HX8389BDS15_H
 
@@ -26,7 +24,7 @@ int mipi_hx8389b_device_register(struct msm_panel_info *pinfo,
 #define CONFIG_BL_CTRL_MODE_2
 #define MAX_BRIGHTNESS_IN_BLU	32
 /* below value should be matched with bootloader. see target_display.c */
-#define KEEP_BRIGHTNESS_ON_FIRST_BOOT 17
+#define KEEP_BRIGHTNESS_ON_FIRST_BOOT
 
 #if defined(CONFIG_BL_CTRL_MODE_2)
 #define MAX_BRIGHTNESS_VALUE	255
