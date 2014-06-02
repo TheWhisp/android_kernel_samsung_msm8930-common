@@ -267,7 +267,7 @@ int get_gpio_ENM(struct msm_camera_sensor_flash_external *external)
 }
 /* KTD2692 : command time delay(us) */
 #define T_DS		15	//	12
-#define T_EOD_H		400	//	350
+#define T_EOD_H		1000 //	350
 #define T_EOD_L		4
 #define T_H_LB		4
 #define T_L_LB		3*T_H_LB

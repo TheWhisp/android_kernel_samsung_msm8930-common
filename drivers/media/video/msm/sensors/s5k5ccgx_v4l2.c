@@ -666,7 +666,7 @@ void s5k5ccgx_set_preview_size(int32_t index)
 
 #if defined(CONFIG_MACH_ESPRESSO10_ATT) || defined(CONFIG_MACH_ESPRESSO10_VZW) \
 				|| defined(CONFIG_MACH_ESPRESSO10_SPR) || defined(CONFIG_MACH_LT02_ATT) \
-				|| defined(CONFIG_MACH_LT02_SPR)
+				|| defined(CONFIG_MACH_LT02_SPR) || defined(CONFIG_MACH_LT02_TMO)
 	case PREVIEW_SIZE_1024x576:
 		CAM_DEBUG("1024*576");
 		S5K5CCGX_WRT_LIST(s5k5ccgx_preview_size_1024_576);
@@ -1233,7 +1233,9 @@ static int s5k5ccgx_set_af_mode(int mode)
 				|| defined(CONFIG_MACH_ESPRESSO10_ATT) \
 				|| defined(CONFIG_MACH_ESPRESSO_SPR) \
 				|| defined(CONFIG_MACH_LT02_ATT) \
-				|| defined(CONFIG_MACH_LT02_SPR)
+				|| defined(CONFIG_MACH_LT02_SPR) \
+				|| defined(CONFIG_MACH_LT02_TMO)
+
 	return 0;
 #endif
 
@@ -2247,7 +2249,8 @@ static struct msm_sensor_ctrl_t s5k5ccgx_s_ctrl = {
 				|| defined(CONFIG_MACH_ESPRESSO10_ATT) \
 				|| defined(CONFIG_MACH_ESPRESSO_SPR) \
 				|| defined(CONFIG_MACH_LT02_ATT) \
-				|| defined(CONFIG_MACH_LT02_SPR)
+				|| defined(CONFIG_MACH_LT02_SPR) \
+				|| defined(CONFIG_MACH_LT02_TMO)
 	.sensor_i2c_addr = 0x2D,
 #else
 	.sensor_i2c_addr = 0x3C,

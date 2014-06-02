@@ -70,7 +70,7 @@ void zinitix_vdd_on(bool onoff)
 		volt_c = "3.3V";
 	}
 
-	pr_err("[TSP] power %s\n", onoff ? "on" : "off");
+	pr_err("%s: power %s\n", __func__, onoff ? "on" : "off");
 
 	if (!reg_lvs6) {
 		reg_lvs6 = regulator_get(NULL, "8917_lvs6");
@@ -177,7 +177,7 @@ int is_zinitix_vdd_on(void)
 	}
 	ret = regulator_is_enabled(reg_l31);
 
-	pr_err("[TSP] %s = %d\n", __func__, ret);
+	pr_info("[TSP] %s = %d\n", __func__, ret);
 
 	return ret ? 1 : 0;
 }
