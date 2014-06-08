@@ -695,7 +695,39 @@ void s5k4ecgx_set_preview(void)
 
 			if ( s5k4ecgx_ctrl->lightsensing_mode == 1 ) { // Lightsensing mode enabled
 				CAM_DEBUG("lightsensing_mode");
+#ifdef CONFIG_MACH_CANE
 				S5K4ECGX_WRITE_LIST(s5k4ecgx_LightSensing_Preview);
+#else
+				S5K4ECGX_WRITE_LIST(s5k4ecgx_ae_lock);
+				S5K4ECGX_WRITE_LIST(s5k4ecgx_awb_lock);
+				S5K4ECGX_WRITE_LIST(s5k4ecgx_ISO_100);
+			} else {
+				if (s5k4ecgx_ctrl->settings.scene ==
+					CAMERA_SCENE_AUTO) {
+					s5k4ecgx_set_whitebalance\
+						(s5k4ecgx_ctrl->settings.wb);
+					s5k4ecgx_set_effect\
+						(s5k4ecgx_ctrl->settings.effect);
+					s5k4ecgx_set_ev\
+						(s5k4ecgx_ctrl->settings.brightness);
+					s5k4ecgx_set_metering\
+						(s5k4ecgx_ctrl->settings.metering);
+				} else {
+					s5k4ecgx_set_scene_mode\
+						(s5k4ecgx_ctrl->settings.scene);
+					if (s5k4ecgx_ctrl->settings.scene
+						== CAMERA_SCENE_NIGHT) {
+						msleep(500);
+						CAM_DEBUG("500ms (NIGHTSHOT)");
+					} else if (s5k4ecgx_ctrl->settings.scene
+						== CAMERA_SCENE_FIRE) {
+						msleep(800);
+						CAM_DEBUG("800ms (FIREWORK)");
+					} else {
+						msleep(50);
+					}
+				}
+#endif
 			}
 		} else {
 			if (s5k4ecgx_ctrl->pre_cam_mode == MOVIE_MODE ) {
