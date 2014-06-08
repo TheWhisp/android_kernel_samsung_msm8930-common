@@ -517,6 +517,9 @@ static const u16 sr030pc50_Init_Reg[] = {
 0x108c,
 
 0x0170,
+
+0xff14, //200ms
+
 };
 
 static const u16 sr030pc50_stop_stream[]  = {
@@ -568,8 +571,9 @@ static const u16 sr030pc50_fps_Auto[]  = {
 0x0300,
 0x1190,
 0x01f0,
-};
 
+0xff0a,
+};
 
 static const u16 sr030pc50_25_fps_50Hz[]  = {
 0x0300,
@@ -609,6 +613,8 @@ static const u16 sr030pc50_25_fps_50Hz[]  = {
 0x0300,
 0x1194,
 0x0170,
+
+0xff28,
 };
 
 static const u16 sr030pc50_15_fps_50Hz[]  = {
@@ -650,6 +656,8 @@ static const u16 sr030pc50_15_fps_50Hz[]  = {
 0x0300,
 0x1194,
 0x0170,
+
+0xff28,
 };
 
 static const u16 sr030pc50_24_fps_60Hz[]  = {
@@ -691,6 +699,8 @@ static const u16 sr030pc50_24_fps_60Hz[]  = {
 0x0300,
 0x1194,
 0x0170,
+
+0xff0a,
 };
 
 static const u16 sr030pc50_15_fps_60Hz[]  = {
@@ -729,6 +739,8 @@ static const u16 sr030pc50_15_fps_60Hz[]  = {
 0x0300,
 0x1194,
 0x0170,
+
+0xff0a,
 };
 
 static const u16 sr030pc50_brightness_M4[] = {
