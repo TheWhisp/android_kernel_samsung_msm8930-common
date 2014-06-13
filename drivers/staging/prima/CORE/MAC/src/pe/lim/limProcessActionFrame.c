@@ -2047,13 +2047,13 @@ limProcessActionFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession ps
               }
               else
               {
-                 limLog( pMac, LOGE, FL("Dropping the vendor specific action frame because of( "
+                 /*limLog( pMac, LOGE, FL("Dropping the vendor specific action frame because of( "
                                         "WES Mode not enabled (WESMODE = %d) or OUI mismatch (%02x %02x %02x) or "
                                         "not received with SelfSta Mac address) system role = %d"),
                                         IS_WES_MODE_ENABLED(pMac),
                                         pVendorSpecific->Oui[0], pVendorSpecific->Oui[1],
                                         pVendorSpecific->Oui[2],
-                                        psessionEntry->limSystemRole );
+                                        psessionEntry->limSystemRole );*/
               }
            }
            break;
