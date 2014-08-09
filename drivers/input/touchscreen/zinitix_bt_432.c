@@ -63,7 +63,7 @@
 #endif
 
 /* touch booster */
-#define TOUCH_BOOSTER			0
+#define TOUCH_BOOSTER			1
 #define TOUCH_BOOSTER_OFF_TIME	300
 #define TOUCH_BOOSTER_CHG_TIME	200
 
