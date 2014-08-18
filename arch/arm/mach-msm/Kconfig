@@ -1026,6 +1026,24 @@ config MACH_WILCOX_EUR_LTE
         help
           Support for the Samsung Wilcox device.
 
+config MACH_LOGANRE
+	depends on ARCH_MSM8930
+	bool "MSM8930 LOGANRE"
+	help
+	  Support for the Samsung Loganre device.
+
+config MACH_LOGANRE_EUR_LTE
+	depends on MACH_LOGANRE
+	bool "MSM8930 LOGANRE EUR LTE"
+	help
+	  Support for the Samsung Loganre device.
+
+config MACH_LOGANRE_LTN_LTE
+	depends on MACH_LOGANRE
+	bool "MSM8930 LOGANRE LTN LTE"
+	help
+	  Support for the Samsung Loganre device.
+
 config MACH_SERRANO_USC
 	depends on MACH_SERRANO
 	bool "MSM8930 SERRANO EUR LTE"
