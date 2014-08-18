@@ -22,7 +22,7 @@
 #include <media/v4l2-subdev.h>
 #include <mach/gpio.h>
 #include <mach/camera.h>
-#if defined (CONFIG_MACH_CANE)
+#if defined (CONFIG_MACH_CANE) || defined (CONFIG_MACH_LOGANRE)
 #include <mach/msm8930-gpio.h>
 #endif
 
@@ -61,7 +61,7 @@ static struct test *testBuf;
 
 #endif
 
-#if defined (CONFIG_MACH_CANE)
+#if defined (CONFIG_MACH_CANE) || defined (CONFIG_MACH_LOGANRE)
 static struct regulator *l29, *l32, *l34;
 #endif
 
@@ -837,7 +837,7 @@ static int sr030pc50_sensor_power_up(struct msm_sensor_ctrl_t *s_ctrl)
 {
 	int rc = 0;
 	int temp = 0;
-#if defined (CONFIG_MACH_CANE)
+#if defined (CONFIG_MACH_CANE) || defined (CONFIG_MACH_LOGANRE)
 	int ret = 0;
 #endif
 
@@ -869,7 +869,7 @@ static int sr030pc50_sensor_power_up(struct msm_sensor_ctrl_t *s_ctrl)
 	CAM_DEBUG("CAM_3M_ISP_INIT : %d", temp);
 
 	/*Power on the LDOs */
-#if defined (CONFIG_MACH_CANE)
+#if defined (CONFIG_MACH_CANE) || defined (CONFIG_MACH_LOGANRE)
 	/*Sensor AVDD 2.8V - CAM_SENSOR_A2P8 */
 	l32 = regulator_get(NULL, "8917_l32");
 	ret = regulator_set_voltage(l32, 2800000, 2800000);
@@ -1229,7 +1229,7 @@ static int sr030pc50_sensor_power_down(struct msm_sensor_ctrl_t *s_ctrl)
 
 	usleep(10);
 
-#if defined (CONFIG_MACH_CANE)
+#if defined (CONFIG_MACH_CANE) || defined (CONFIG_MACH_LOGANRE)
 	/*VT core 1.8 - CAM_DVDD_1P8*/
 	if (l29) {
 		rc = regulator_disable(l29);

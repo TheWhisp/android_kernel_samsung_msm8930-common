@@ -37,7 +37,7 @@ struct sec_jack_buttons_zone {
 };
 
 struct sec_jack_platform_data {
-#if  defined (CONFIG_MACH_CANE)
+#if defined(CONFIG_MACH_CANE) || defined(CONFIG_MACH_LOGANRE)
         int     (*get_det_jack_state) (void);
 #endif
 
@@ -56,7 +56,7 @@ struct sec_jack_platform_data {
         struct sec_jack_buttons_zone *buttons_zones_rev03;
 #endif
 
-#if defined (CONFIG_MACH_CANE)
+#if defined(CONFIG_MACH_CANE) || defined(CONFIG_MACH_LOGANRE)
         int det_int;
         int send_int;
 #endif

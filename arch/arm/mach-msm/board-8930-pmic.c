@@ -333,7 +333,7 @@ static int pm8921_therm_mitigation[] = {
 	325,
 };
 
-#if defined(CONFIG_MACH_SERRANO) || defined(CONFIG_MACH_CANE)
+#if defined(CONFIG_MACH_SERRANO) || defined(CONFIG_MACH_CANE) || defined(CONFIG_MACH_LOGANRE)
 /* define structure and parameters for SERRANO PMIC internal charger*/
 /* it has to be matched with cable_type_t */
 static struct pm8921_charging_current charging_current_table[] = {

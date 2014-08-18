@@ -1424,7 +1424,7 @@ probe_fail:
 }
 #endif
 
-#if !(defined(CONFIG_MACH_GOLDEN) || defined(CONFIG_MACH_LT02_ATT) || defined(CONFIG_MACH_LT02_SPR) || defined(CONFIG_MACH_LT02_TMO) || defined(CONFIG_MACH_CANE))
+#if !(defined(CONFIG_MACH_GOLDEN) || defined(CONFIG_MACH_LT02_ATT) || defined(CONFIG_MACH_LT02_SPR) || defined(CONFIG_MACH_LT02_TMO) || defined(CONFIG_MACH_CANE) || defined(CONFIG_MACH_LOGANRE))
 static struct v4l2_subdev *msm_eeprom_probe(
 	struct msm_eeprom_info *eeprom_info)
 {
@@ -1509,7 +1509,7 @@ int msm_sensor_register(struct v4l2_subdev *sensor_sd)
 #ifdef CONFIG_MSM_ACTUATOR
 	pcam->act_sdev = msm_actuator_probe(sdata->actuator_info);
 #endif
-#if !(defined(CONFIG_MACH_GOLDEN) || defined(CONFIG_MACH_LT02_ATT) || defined(CONFIG_MACH_LT02_SPR) || defined(CONFIG_MACH_LT02_TMO) || defined(CONFIG_MACH_CANE))
+#if !(defined(CONFIG_MACH_GOLDEN) || defined(CONFIG_MACH_LT02_ATT) || defined(CONFIG_MACH_LT02_SPR) || defined(CONFIG_MACH_LT02_TMO) || defined(CONFIG_MACH_CANE) || defined(CONFIG_MACH_LOGANRE))
 	pcam->eeprom_sdev = msm_eeprom_probe(sdata->eeprom_info);
 #endif
 
